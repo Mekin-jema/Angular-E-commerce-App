@@ -23,6 +23,7 @@ module.exports = [
           ],
         },
       ],
+      '@angular-eslint/prefer-standalone': 'off',
     },
   },
   {

@@ -1,0 +1,17 @@
+<div class="fixed w-[175px] bg-black h-full">
+  <div class="w-full">
+    <img src="logo.png" alt="Logo" class="max-w-[95%]" />
+  </div>
+  <div>
+    <ul class="m-0 p-0">
+      <li *ngFor="let item of menuItems" class="block list-none w-full">
+        <a
+          class="text-white py-[10px] px-[15px] flex items-center w-full hover:bg-blue-700"
+        >
+          <fa-icon [icon]="item.icon" class="mr-3"></fa-icon>
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

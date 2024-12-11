@@ -1,6 +1,8 @@
 import { Route } from '@angular/router';
 import { ShellComponent } from './shared/shell/shell.component';
 import { DasboardComponent } from './pages/dasboard/dasboard.component';
+import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
+import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
 
 export const appRoutes: Route[] = [
   {
@@ -11,6 +13,30 @@ export const appRoutes: Route[] = [
         path: 'dashboard',
         component: DasboardComponent,
       },
+      // {
+      //   path: 'products',
+      //   component: ProductsComponent,
+      // },
+      {
+        path: 'categories',
+        component: CategoriesListComponent,
+      },
+      {
+        path: 'categories/form',
+        component: CategoriesFormComponent,
+      },
+      // {
+      //   path: 'orders',
+      //   component: OrdersComponent,
+      // },
+      // {
+      //   path: 'users',
+      //   component: UsersComponent,
+      // },
+      // {
+      //   path: 'logout',
+      //   component: LogoutComponent,
+      // },
     ],
   },
 ];

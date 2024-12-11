@@ -17,11 +17,11 @@ import {
 })
 export class SidebarComponent {
   menuItems = [
-    { icon: faTachometerAlt, label: 'Dashboard' },
-    { icon: faBoxOpen, label: 'Products' },
-    { icon: faThLarge, label: 'Categories' },
-    { icon: faShoppingCart, label: 'Orders' },
-    { icon: faUsers, label: 'Users' },
-    { icon: faSignOutAlt, label: 'Logout' },
+    { icon: faTachometerAlt, label: 'Dashboard', route: '/dashboard' },
+    { icon: faBoxOpen, label: 'Products', route: '/products' },
+    { icon: faThLarge, label: 'Categories', route: '/categories' },
+    { icon: faShoppingCart, label: 'Orders', route: '/orders' },
+    { icon: faUsers, label: 'Users', route: '/users' },
+    { icon: faSignOutAlt, label: 'Logout', route: '/logout' },
   ];
 }

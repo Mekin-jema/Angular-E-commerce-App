@@ -1,5 +1,4 @@
 import express from 'express';
-import Category from '../models/category.model.js';
 import {
     deleteCategory,
     getAllCategories,

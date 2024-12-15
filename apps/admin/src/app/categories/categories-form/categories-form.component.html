@@ -1,7 +1,7 @@
 <p-toast position="top-right"></p-toast>
 <div class="admin-pge">
   <p-card
-    header="Add Categoriries"
+    [header]="editMode ? 'Edit Category' : 'Add Catogory'"
     subheader="You can add or edit categories here "
   >
     <div class="p-grid p-mb-5">
@@ -10,7 +10,7 @@
           <div class="p-toolbar-group-left"></div>
           <div class="p-toolbar-group-right gap-4">
             <p-button
-              label="Create"
+              [label]="editMode ? 'Update' : 'Create'"
               (onClick)="onSubmit()"
               icon="pi pi-plus"
               styleClass="p-button-primary gap-2"

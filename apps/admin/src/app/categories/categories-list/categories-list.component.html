@@ -1,6 +1,6 @@
 <p-toast position="top-right"></p-toast>
 <div class="admin-pge">
-  <p-card header="Categoriries " subheader="List  of categories ">
+  <p-card header="Category " subheader="List  of categories ">
     <div class="p-grid">
       <div class="p-col-12">
         <p-toolbar>
@@ -29,18 +29,19 @@
               <th>Icon</th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="body" let-categories>
+          <ng-template pTemplate="body" let-category>
             <tr>
-              <td>{{ categories.id }}</td>
-              <td>{{ categories.name }}</td>
-              <td>{{ categories.icon }}</td>
+              <td>{{ category.id }}</td>
+              <td>{{ category.name }}</td>
+              <td>{{ category.icon }}</td>
               <p-button
-                (click)="deleteCategory(categories.id)"
+                (click)="deleteCategory(category.id)"
                 class="mr-2"
                 styleClass="p-button-danger "
                 icon="pi pi-trash"
               ></p-button>
               <p-button
+                (click)="editCategory(category.id)"
                 styleClass="p-button-success"
                 icon="pi pi-pencil"
               ></p-button>

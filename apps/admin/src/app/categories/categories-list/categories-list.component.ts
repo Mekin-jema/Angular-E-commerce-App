@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoriesService, Category } from '@e-commerce/products';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
@@ -28,10 +29,12 @@ export class CategoriesListComponent implements OnInit {
   //   },
   // ];
   categories: Category[] = [];
+  // constructor() {}
   constructor(
     private categoriesServices: CategoriesService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +66,9 @@ export class CategoriesListComponent implements OnInit {
       },
       reject: () => {},
     });
+  }
+  editCategory(categoryId: string) {
+    this.router.navigateByUrl(`categories/form/${categoryId}`);
   }
 
   private __getCategories() {

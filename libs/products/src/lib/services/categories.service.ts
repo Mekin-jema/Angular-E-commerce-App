@@ -13,15 +13,26 @@ export class CategoriesService {
       'http://localhost:3000/api/v1/categories/get-all-categories'
     );
   }
+  getCategory(categoryId: string): Observable<Category> {
+    return this.http.get<Category>(
+      `http://localhost:3000/api/v1/categories/get-single-category/${categoryId}`
+    );
+  }
   createCategory(category: Category): Observable<Category> {
     return this.http.post<Category>(
       'http://localhost:3000/api/v1/categories/add-category',
       category
     );
   }
+
   deleteCategory(categoryId: string): Observable<Category> {
     return this.http.delete<Category>(
       `http://localhost:3000/api/v1/categories/delete-category/${categoryId}`
+    );
+  }
+  updateCategory(categoryId: string): Observable<Category> {
+    return this.http.put<Category>(
+      `http://localhost:3000/api/v1/categories/update-category/${categoryId}`
     );
   }
 }

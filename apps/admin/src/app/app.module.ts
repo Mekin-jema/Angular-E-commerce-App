@@ -1,27 +1,37 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { appRoutes } from './app.routes';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
 
+// Components
+import { AppComponent } from './app.component';
+import { NxWelcomeComponent } from './nx-welcome.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { DasboardComponent } from './pages/dasboard/dasboard.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
-import { CardModule } from 'primeng/card';
-//toolbar
-import { ToolbarModule } from 'primeng/toolbar';
-// button
-import { ButtonModule } from 'primeng/button';
-//splitbutton
-import { SplitButtonModule } from 'primeng/splitbutton';
-//table module
-import { TableModule } from 'primeng/table';
-import { provideHttpClient } from '@angular/common/http';
-import { CategoriesService } from '@e-commerce/products';
 import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
+
+// Routes
+import { appRoutes } from './app.routes';
+
+// Services
+import { MessageService } from 'primeng/api';
+import { CategoriesService } from '@e-commerce/products';
+
+// PrimeNG Modules
+import { CardModule } from 'primeng/card';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ButtonModule } from 'primeng/button';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+
+// FontAwesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const UX_MODULE = [
   CardModule,
@@ -29,6 +39,8 @@ const UX_MODULE = [
   ButtonModule,
   SplitButtonModule,
   TableModule,
+  InputTextModule,
+  ToastModule,
 ];
 
 @NgModule({
@@ -43,11 +55,13 @@ const UX_MODULE = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
     RouterModule.forRoot(appRoutes),
     ...UX_MODULE,
   ],
-  providers: [provideHttpClient(), CategoriesService],
+  providers: [provideHttpClient(), CategoriesService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

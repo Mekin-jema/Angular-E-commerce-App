@@ -13,4 +13,10 @@ export class CategoriesService {
       'http://localhost:3000/api/v1/categories/get-all-categories'
     );
   }
+  createCategory(category: Category): Observable<Category> {
+    return this.http.post<Category>(
+      'http://localhost:3000/api/v1/categories/add-category',
+      category
+    );
+  }
 }

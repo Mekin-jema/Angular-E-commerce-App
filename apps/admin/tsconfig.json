@@ -5,7 +5,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
+    "noPropertyAccessFromIndexSignature": false, // This is set to false to allow for dynamic property access
+    "strictPropertyInitialization": false, // This is set to false to allow for dynamic property access
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },

@@ -19,4 +19,9 @@ export class CategoriesService {
       category
     );
   }
+  deleteCategory(categoryId: string): Observable<Category> {
+    return this.http.delete<Category>(
+      `http://localhost:3000/api/v1/categories/delete-category/${categoryId}`
+    );
+  }
 }

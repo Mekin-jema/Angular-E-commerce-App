@@ -29,6 +29,8 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 // FontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -41,6 +43,7 @@ const UX_MODULE = [
   TableModule,
   InputTextModule,
   ToastModule,
+  ConfirmDialogModule,
 ];
 
 @NgModule({
@@ -61,7 +64,12 @@ const UX_MODULE = [
     RouterModule.forRoot(appRoutes),
     ...UX_MODULE,
   ],
-  providers: [provideHttpClient(), CategoriesService, MessageService],
+  providers: [
+    provideHttpClient(),
+    CategoriesService,
+    MessageService,
+    ConfirmationService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

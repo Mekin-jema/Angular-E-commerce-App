@@ -10,6 +10,8 @@ module.exports = [
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     rules: {
+      'no-empty-function': 'off',
+      '@typescript-eslint/no-empty-function': 'off',
       '@nx/enforce-module-boundaries': [
         'error',
         {

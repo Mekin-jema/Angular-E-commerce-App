@@ -8,6 +8,8 @@ module.exports = [
   {
     files: ['**/*.ts'],
     rules: {
+      'no-empty-function': 'off',
+      '@typescript-eslint/no-empty-function': 'off',
       '@angular-eslint/prefer-standalone': 'off',
       '@angular-eslint/directive-selector': [
         'error',

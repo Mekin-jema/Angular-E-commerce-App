@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -8,6 +9,7 @@ import {
 import { CategoriesService, Category } from '@e-commerce/products';
 
 import { MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-categories-form',
@@ -22,7 +24,8 @@ export class CategoriesFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private categoriesService: CategoriesService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private location: Location
   ) {}
   // another way to create form
 
@@ -59,6 +62,11 @@ export class CategoriesFormComponent implements OnInit {
           summary: 'Success',
           detail: 'Category is created',
         });
+        timer(2000)
+          .toPromise()
+          .then((done) => {
+            this.location.back();
+          });
       },
       error: (error) => {
         this.messageService.add({

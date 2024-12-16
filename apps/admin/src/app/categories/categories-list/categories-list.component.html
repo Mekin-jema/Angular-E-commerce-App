@@ -45,12 +45,9 @@
               <td><i class="pi" [ngClass]="'pi-' + category.icon"></i></td>
               <td>
                 <span
-                  [ngStyle]="{
-                    backgroundColor: category.color,
-                    color: 'white'
-                  }"
-                  >{{ category.color }}</span
-                >
+                  class="w-4 h-4 rounded-full inline-block border border-gray-400"
+                  [ngStyle]="{ 'background-color': category.color }"
+                ></span>
               </td>
               <p-button
                 (click)="deleteCategory(category.id)"

@@ -27,6 +27,7 @@
               <th>Id</th>
               <th>Name</th>
               <th>Icon</th>
+              <Th>Color</Th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-category>
@@ -34,6 +35,7 @@
               <td>{{ category.id }}</td>
               <td>{{ category.name }}</td>
               <td>{{ category.icon }}</td>
+              <td>{{ category.color }}</td>
               <p-button
                 (click)="deleteCategory(category.id)"
                 class="mr-2"

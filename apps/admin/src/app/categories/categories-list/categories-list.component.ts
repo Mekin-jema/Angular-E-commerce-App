@@ -38,7 +38,7 @@ export class CategoriesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.__getCategories();
+    this._getCategories();
   }
   deleteCategory(categoryId: string) {
     this.confirmationService.confirm({
@@ -47,15 +47,15 @@ export class CategoriesListComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.categoriesServices.deleteCategory(categoryId).subscribe({
-          next: (response) => {
-            this.__getCategories();
+          next: () => {
+            this._getCategories();
             this.messageService.add({
               severity: 'success',
               summary: 'Success',
               detail: 'Category has been deleted',
             });
           },
-          error: (error: any) => {
+          error: () => {
             this.messageService.add({
               severity: 'error',
               summary: 'Error',
@@ -71,7 +71,7 @@ export class CategoriesListComponent implements OnInit {
     this.router.navigateByUrl(`categories/form/${categoryId}`);
   }
 
-  private __getCategories() {
+  private _getCategories() {
     this.categoriesServices.getCategories().subscribe((data) => {
       this.categories = data;
     });

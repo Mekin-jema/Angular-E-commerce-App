@@ -1,6 +1,10 @@
-<div class="fixed w-[175px] bg-black h-full top-0">
-  <div class="w-full">
-    <img src="logo.png" alt="Logo" class="max-w-full" />
+<div class="fixed w-[175px] bg-[#0a4858] h-full top-0">
+  <div class="w-full flex justify-center items-center py-4 bg-gray-900">
+    <img
+      src="ሳተናው_ሎጎ.png"
+      alt="Logo"
+      class="max-w-full h-auto rounded-full shadow-lg"
+    />
   </div>
   <div>
     <ul class="m-0 p-0">
@@ -10,13 +14,10 @@
       >
         <a
           class="text-white py-[10px] px-[15px] flex items-center w-full hover:bg-blue-700"
-          [ngClass]="{ 'text-blue-500 ': last }"
+          [ngClass]="{ 'text-blue-700': last }"
           [routerLink]="item.route"
         >
-          <fa-icon
-            [icon]="item.icon"
-            class="mr-[8px] mt-0 float-left"
-          ></fa-icon>
+          <i [ngClass]="item.icon" class="mr-[8px] mt-0 float-left"></i>
           {{ item.label }}
         </a>
       </li>

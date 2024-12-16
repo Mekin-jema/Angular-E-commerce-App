@@ -8,9 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class CategoriesService {
   constructor(private http: HttpClient) {}
+
+  // getCategories(): Observable<Category[]> {
+  //   return this.http.get<Category[]>(
+  //     'http://localhost:3000/api/v1/categories/get-all-categories'
+  //   );
+  // }
+
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(
-      'http://localhost:3000/api/v1/categories/get-all-categories'
+      `http://localhost:3000/api/v1/categories/get-all-categories`
     );
   }
   getCategory(categoryId: string): Observable<Category> {
@@ -30,9 +37,11 @@ export class CategoriesService {
       `http://localhost:3000/api/v1/categories/delete-category/${categoryId}`
     );
   }
-  updateCategory(categoryId: string): Observable<Category> {
+
+  editCategory(categoryId: string, category: Category): Observable<Category> {
     return this.http.put<Category>(
-      `http://localhost:3000/api/v1/categories/update-category/${categoryId}`
+      `http://localhost:3000/api/v1/categories/update-category/${categoryId}`,
+      category
     );
   }
 }

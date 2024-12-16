@@ -47,7 +47,8 @@ export class CategoriesFormComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       icon: ['', Validators.required],
-      // color: [''],
+
+      color: ['#fff', Validators.required],
     });
     this._checkEditMode();
   }
@@ -57,12 +58,13 @@ export class CategoriesFormComponent implements OnInit {
       return;
     }
     const category: Category = {
-      // id: this.currentCategoryId,
+      id: Number(this.currentCategoryId),
       name: this.categoryForm.name.value,
       icon: this.categoryForm.icon.value,
+      color: this.categoryForm.color.value,
     };
     if (this.editMode) {
-      // this._updateCategory(category);
+      this._updateCategory(category);
     } else {
       this._addCategory(category);
     }
@@ -78,8 +80,9 @@ export class CategoriesFormComponent implements OnInit {
             next: (category: Category) => {
               this.categoryForm.name.setValue(category.name);
               this.categoryForm.icon.setValue(category.icon);
+              this.categoryForm.color.setValue(category.color);
             },
-            error: (error) => {
+            error: () => {
               this.messageService.add({
                 severity: 'error',
                 summary: 'Error',
@@ -119,34 +122,34 @@ export class CategoriesFormComponent implements OnInit {
     });
   }
 
-  // private _updateCategory(category: Category) {
-  //   this.route.params.subscribe((params) => {
-  //     this.categoriesService.updateCategory(params.id, category).subscribe({
-  //       next: (response) => {
-  //         this.messageService.add({
-  //           severity: 'success',
-  //           summary: 'Success',
-  //           detail: 'Category is updated',
-  //         });
-  //         timer(2000)
-  //           .toPromise()
-  //           .then((done) => {
-  //             this.location.back();
-  //           });
-  //       },
-  //       error: (error) => {
-  //         this.messageService.add({
-  //           severity: 'error',
-  //           summary: 'Error',
-  //           detail: 'Category is not updated',
-  //         });
-  //       },
-  //       complete: () => {
-  //         console.log('Update category operation completed.');
-  //       },
-  //     });
-  //   });
-  // }
+  private _updateCategory(category: Category) {
+    this.route.params.subscribe((params) => {
+      this.categoriesService.editCategory(params.id, category).subscribe({
+        next: (response) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Category is updated',
+          });
+          timer(2000)
+            .toPromise()
+            .then((done) => {
+              this.location.back();
+            });
+        },
+        error: (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Category is not updated',
+          });
+        },
+        complete: () => {
+          console.log('Update category operation completed.');
+        },
+      });
+    });
+  }
   // getter for form control
   get categoryForm() {
     return this.form.controls;

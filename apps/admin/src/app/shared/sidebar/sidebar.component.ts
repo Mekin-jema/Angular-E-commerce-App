@@ -1,13 +1,4 @@
 import { Component } from '@angular/core';
-import {
-  faTachometerAlt,
-  faBoxOpen,
-  faThLarge,
-  faShoppingCart,
-  faUsers,
-  faSignOutAlt,
-} from '@fortawesome/free-solid-svg-icons';
-
 @Component({
   selector: 'app-sidebar',
   standalone: false,
@@ -17,11 +8,11 @@ import {
 })
 export class SidebarComponent {
   menuItems = [
-    { icon: faTachometerAlt, label: 'Dashboard', route: '/dashboard' },
-    { icon: faBoxOpen, label: 'Products', route: '/products' },
-    { icon: faThLarge, label: 'Categories', route: '/categories' },
-    { icon: faShoppingCart, label: 'Orders', route: '/orders' },
-    { icon: faUsers, label: 'Users', route: '/users' },
-    { icon: faSignOutAlt, label: 'Logout', route: '/logout' },
+    { icon: 'pi pi-home', label: 'Dashboard', route: '/dashboard' },
+    { icon: 'pi pi-box', label: 'Products', route: '/products' },
+    { icon: 'pi pi-th-large', label: 'Categories', route: '/categories' },
+    { icon: 'pi pi-shopping-cart', label: 'Orders', route: '/orders' },
+    { icon: 'pi pi-users', label: 'Users', route: '/users' },
+    { icon: 'pi pi-sign-out', label: 'Logout', route: '/logout' },
   ];
 }

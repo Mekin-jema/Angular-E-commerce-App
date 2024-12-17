@@ -11,15 +11,13 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { DasboardComponent } from './pages/dasboard/dasboard.component';
-import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
-import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
 
 // Routes
 import { appRoutes } from './app.routes';
 
 // Services
 import { MessageService } from 'primeng/api';
-import { CategoriesService } from '@e-commerce/products';
+import { CategoriesService, ProductsService } from '@e-commerce/products';
 
 // PrimeNG Modules
 import { CardModule } from 'primeng/card';
@@ -35,6 +33,10 @@ import { ColorPickerModule } from 'primeng/colorpicker';
 
 // FontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
+import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
+import { ProductFormComponent } from './pages/product/product-form/product-form.component';
+import { ProductListComponent } from './pages/product/product-list/product-list.component';
 
 const UX_MODULE = [
   CardModule,
@@ -57,6 +59,8 @@ const UX_MODULE = [
     DasboardComponent,
     CategoriesListComponent,
     CategoriesFormComponent,
+    ProductFormComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +73,7 @@ const UX_MODULE = [
   providers: [
     provideHttpClient(),
     CategoriesService,
+    ProductsService,
     MessageService,
     ConfirmationService,
   ],

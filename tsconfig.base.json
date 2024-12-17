@@ -19,7 +19,7 @@
       "@e-commerce/products": ["libs/products/src/index.ts"],
       "@e-commerce/ui": ["libs/ui/src/index.ts"],
       "@e-commerce/users": ["libs/users/src/index.ts"],
-      "@env/*": ["apps/admin/src/environments/*"]
+      "@env/*": ["environments/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

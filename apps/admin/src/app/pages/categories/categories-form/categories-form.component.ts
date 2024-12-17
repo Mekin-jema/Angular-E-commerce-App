@@ -121,7 +121,6 @@ export class CategoriesFormComponent implements OnInit {
       },
     });
   }
-
   private _updateCategory(category: Category) {
     this.route.params.subscribe((params) => {
       this.categoriesService.editCategory(params.id, category).subscribe({

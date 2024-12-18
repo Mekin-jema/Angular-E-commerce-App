@@ -14,6 +14,7 @@ import { DasboardComponent } from './pages/dasboard/dasboard.component';
 
 // Routes
 import { appRoutes } from './app.routes';
+// import { RouterModule } from '@angular/router';
 
 // Services
 import { MessageService } from 'primeng/api';
@@ -30,13 +31,14 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 // FontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
-import { ProductFormComponent } from './pages/product/product-form/product-form.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
+import { ProductFormComponent } from './pages/product/product-form/product-form.component';
 
 const UX_MODULE = [
   CardModule,
@@ -48,6 +50,7 @@ const UX_MODULE = [
   ToastModule,
   ConfirmDialogModule,
   ColorPickerModule,
+  InputNumberModule,
 ];
 
 @NgModule({

@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   menuItems = [
     { icon: 'pi pi-home', label: 'Dashboard', route: '/dashboard' },
-    { icon: 'pi pi-box', label: 'Products', route: '/products' },
+    { icon: 'pi pi-box', label: 'Products', route: '/product' },
     { icon: 'pi pi-th-large', label: 'Categories', route: '/categories' },
     { icon: 'pi pi-shopping-cart', label: 'Orders', route: '/orders' },
     { icon: 'pi pi-users', label: 'Users', route: '/users' },

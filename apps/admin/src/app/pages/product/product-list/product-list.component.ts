@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductsService } from '@e-commerce/products';
-import { Product } from 'libs/products/src/lib/model/product';
+import { ProductsService, Product } from '@e-commerce/products';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
@@ -9,7 +8,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   standalone: false,
 
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css',
+  styles: ``,
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
@@ -52,7 +51,7 @@ export class ProductListComponent implements OnInit {
     });
   }
   editProduct(productId: string) {
-    this.router.navigateByUrl(`categories/form/${productId}`);
+    this.router.navigateByUrl(`product/form/${productId}`);
   }
 
   private _getProducts() {

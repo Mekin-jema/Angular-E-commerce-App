@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Product, ProductsService } from '@e-commerce/products';
+import {
+  CategoriesService,
+  Category,
+  Product,
+  ProductsService,
+} from '@e-commerce/products';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 import { Location } from '@angular/common';
@@ -14,6 +19,7 @@ import { Location } from '@angular/common';
   styles: ``,
 })
 export class ProductFormComponent implements OnInit {
+  categories: Category[] = [];
   form: FormGroup;
   isSubmitted = false;
   editMode = false;
@@ -21,6 +27,7 @@ export class ProductFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private productService: ProductsService,
+    private categoryService: CategoriesService,
     private messageService: MessageService,
     private location: Location,
     private route: ActivatedRoute
@@ -38,6 +45,7 @@ export class ProductFormComponent implements OnInit {
     this._checkEditMode();
 
     this._initForm();
+    this._getCategories();
   }
   onSubmit() {
     this.isSubmitted = true;
@@ -147,10 +155,16 @@ export class ProductFormComponent implements OnInit {
       price: ['', Validators.required],
       category: ['', Validators.required],
       countInStock: ['', Validators.required],
-      description: ['', Validators.required],
+      description: [''],
       richDescription: [''],
       image: [''],
       isFeatured: [''],
+    });
+  }
+
+  private _getCategories() {
+    this.categoryService.getCategories().subscribe((categories) => {
+      this.categories = categories;
     });
   }
 }

@@ -97,27 +97,14 @@
           <!-- Add a dropdown or similar input for category selection -->
           <p-dropdown
             [options]="categories"
-            formControlName="categories"
+            formControlName="category"
             optionLabel="name"
-            optionValue="code"
+            optionValue="id"
             placeholder="Select a Category"
             filterBy="name"
             [showClear]="true"
             [filter]="true"
           ></p-dropdown>
-
-          <input
-            formControlName="category"
-            id="category"
-            type="text"
-            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-          />
-          <small
-            *ngIf="productForm.category.invalid && isSubmitted"
-            class="p-error"
-          >
-            Category is required
-          </small>
         </div>
         <div class="p-field p-col-12 p-md-4">
           <label for="isFeatured">Is Featured</label>
@@ -154,6 +141,19 @@
         >
           Description is required
         </small>
+      </div>
+      <div class="p-field p-col-4">
+        <label for="image">Main Image</label>
+        <input
+          accept="image/*"
+          id="image"
+          type="file"
+          class="p-inputtext"
+          (change)="onImageUpload($event)"
+        />
+        <div class="p=col-2 p-mt-2 p-pl-0">
+          <img [src]="imageDisplay" alt="alt" style="width: 50%" />
+        </div>
       </div>
     </form>
   </p-card>

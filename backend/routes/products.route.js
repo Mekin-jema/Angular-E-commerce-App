@@ -1,6 +1,5 @@
 import express from 'express';
 
-import multer from 'multer';
 import {
     addGalleryImages,
     deleteProduct,
@@ -20,7 +19,7 @@ router.get(`/get-product-by-id/:id`, getProductById);
 
 router.post(`/add-product`, uploadOptions.single('image'), insertProduct);
 
-router.put('/update-image/:id', uploadOptions.single('image'), updateProduct);
+router.put('/update-proudct/:id', uploadOptions.single('image'), updateProduct);
 
 router.put('/update-images/:id', uploadOptions.array('images', 10), addGalleryImages);
 router.delete('/delete-product/:id', deleteProduct);

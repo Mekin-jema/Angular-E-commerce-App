@@ -23,7 +23,8 @@ export class ProductFormComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
   editMode = false;
-  // currentCategoryId: string;
+  imageDisplay: string | ArrayBuffer;
+  currentProudctId: string;
   constructor(
     private fb: FormBuilder,
     private productService: ProductsService,
@@ -52,18 +53,40 @@ export class ProductFormComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    const product: Product = {
-      name: this.productForm.name.value,
-      image: this.productForm.image.value,
-      price: this.productForm.price.value,
-      countInStock: this.productForm.countInStock.value,
-      category: this.productForm.category.value,
-      dateCreated: this.productForm.dateCreated.value,
-    };
+    console.log(this.form.get('image')?.value);
+    const productFormData = new FormData();
+    Object.keys(this.productForm).forEach((key) => {
+      if (key === 'image' && this.productForm[key].value instanceof File) {
+        productFormData.append(key, this.productForm[key].value);
+      } else {
+        productFormData.append(key, this.productForm[key].value);
+      }
+    });
+
+    // productFormData.append('name', this.productForm.name.value);
+    // console.log(productFormData);
+    // console.log(this.productForm.name.value);
     if (this.editMode) {
-      this._updateProduct(product);
+      this._updateProduct(productFormData);
     } else {
-      this._addProudct(product);
+      this._addProudct(productFormData);
+    }
+  }
+
+  onImageUpload(event: any) {
+    const file = event.target.files[0];
+    console.log(file);
+    if (file) {
+      this.form.patchValue({ image: file }); // Update form control with the file
+      this.form.get('image')?.updateValueAndValidity();
+
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        if (fileReader.result) {
+          this.imageDisplay = fileReader.result; // Use base64 for preview
+        }
+      };
+      fileReader.readAsDataURL(file);
     }
   }
 
@@ -71,15 +94,23 @@ export class ProductFormComponent implements OnInit {
     {
       this.route.params.subscribe((params) => {
         if (params.id) {
+          console.log(params.id);
           this.editMode = true;
 
           this.productService.getProduct(params.id).subscribe({
             next: (product: Product) => {
               this.productForm.name.setValue(product.name);
               this.productForm.image.setValue(product.image);
+              this.productForm.brand.setValue(product.brand);
               this.productForm.price.setValue(product.price);
+              this.productForm.isFeatured.setValue(product.isFeatured);
               this.productForm.countInStock.setValue(product.countInStock);
-              this.productForm.category.setValue(product.category);
+              this.productForm.category.setValue(product.category.id);
+              this.productForm.description.setValue(product.description);
+              this.imageDisplay = product.image ?? '';
+              this.productForm.richDescription.setValue(
+                product.richDescription
+              );
               this.productForm.dateCreated.setValue(product.dateCreated);
             },
             error: () => {
@@ -95,8 +126,8 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
-  private _addProudct(product: Product) {
-    this.productService.createProduct(product).subscribe({
+  private _addProudct(productData: FormData) {
+    this.productService.createProduct(productData).subscribe({
       next: () => {
         this.messageService.add({
           severity: 'success',
@@ -121,7 +152,7 @@ export class ProductFormComponent implements OnInit {
       },
     });
   }
-  private _updateProduct(product: Product) {
+  private _updateProduct(product: FormData) {
     this.route.params.subscribe((params) => {
       this.productService.editProduct(params.id, product).subscribe({
         next: () => {
@@ -156,9 +187,9 @@ export class ProductFormComponent implements OnInit {
       category: ['', Validators.required],
       countInStock: ['', Validators.required],
       description: [''],
-      richDescription: [''],
-      image: [''],
-      isFeatured: [''],
+      richDescription: ['', Validators.required],
+      image: ['', Validators.required],
+      isFeatured: [false],
     });
   }
 

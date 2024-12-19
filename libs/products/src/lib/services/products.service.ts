@@ -17,12 +17,12 @@ export class ProductsService {
   }
   getProduct(productId: string): Observable<Product> {
     return this.http.get<Product>(
-      `${this.apiUrl}products/get-single-product/${productId}`
+      `${this.apiUrl}products/get-product-by-id/${productId}`
     );
   }
-  createProduct(product: Product): Observable<Product> {
+  createProduct(product: FormData): Observable<Product> {
     return this.http.post<Product>(
-      '${this.apiUrl}products/add-product',
+      `${this.apiUrl}products/add-product`,
       product
     );
   }
@@ -33,9 +33,9 @@ export class ProductsService {
     );
   }
 
-  editProduct(proudctId: string, proudct: Product): Observable<Product> {
+  editProduct(proudctId: string, proudct: FormData): Observable<Product> {
     return this.http.put<Product>(
-      `${this.apiUrl}products/update-product/${proudctId}`,
+      `${this.apiUrl}products/update-proudct/${proudctId}`,
       proudct
     );
   }

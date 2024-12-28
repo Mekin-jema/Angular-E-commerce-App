@@ -1,0 +1,92 @@
+<p-toast position="top-right"></p-toast>
+<div class="admin-pge">
+  <p-card
+    [header]="editMode ? 'Edit User' : 'Add User'"
+    subheader="You can add or edit users here "
+  >
+    <div class="p-grid p-mb-5">
+      <div class="p-col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left"></div>
+          <div class="p-toolbar-group-right gap-4">
+            <p-button
+              [label]="editMode ? 'Update' : 'Create'"
+              (onClick)="onSubmit()"
+              icon="pi pi-plus"
+              styleClass="p-button-primary gap-2"
+            ></p-button>
+            <p-button
+              label="Cancel"
+              icon="pi pi-arrow-circle-left"
+              styleClass="p-button-secondary"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="p-grid">
+      <div class="p-col-12">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="formgrid grid">
+            <div class="field col">
+              <label for="name">Name</label>
+              <input
+                formControlName="name"
+                id="name"
+                type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+              <small
+                *ngIf="usersForm.name.invalid && isSubmitted"
+                class="p-error"
+                >Name is required</small
+              >
+            </div>
+            <div class="field col">
+              <label for="email">Email</label>
+              <input
+                formControlName="email"
+                id="icon"
+                type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+              <small
+                *ngIf="usersForm.email.invalid && isSubmitted"
+                class="p-error"
+                >Name is required</small
+              >
+            </div>
+            <div class="field col">
+              <label for="isAdmin">IsAdmin</label>
+              <input
+                formControlName="isAdmin"
+                id="icon"
+                type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+              <small
+                *ngIf="usersForm.email.invalid && isSubmitted"
+                class="p-error"
+                >Is Admin is required</small
+              >
+            </div>
+            <div class="field col">
+              <label for="country">Country</label>
+              <input
+                formControlName="country"
+                id="icon"
+                type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+              <small
+                *ngIf="usersForm.email.invalid && isSubmitted"
+                class="p-error"
+                >Name is required</small
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </p-card>
+</div>

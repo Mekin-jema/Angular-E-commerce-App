@@ -43,6 +43,8 @@ import { CategoriesListComponent } from './pages/categories/categories-list/cate
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { ProductFormComponent } from './pages/product/product-form/product-form.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
+import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 
 const UX_MODULE = [
   CardModule,
@@ -72,6 +74,8 @@ const UX_MODULE = [
     CategoriesFormComponent,
     ProductFormComponent,
     ProductListComponent,
+    UsersListComponent,
+    UsersFormComponent,
   ],
   imports: [
     BrowserModule,

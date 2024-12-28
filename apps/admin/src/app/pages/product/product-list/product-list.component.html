@@ -18,6 +18,12 @@
     <div class="p-grid">
       <div class="p-col-12">
         <p-table
+          [paginator]="true"
+          [rows]="10"
+          [showCurrentPageReport]="true"
+          [tableStyle]="{ 'min-width': '50rem' }"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [rowsPerPageOptions]="[10, 25, 50]"
           [value]="products"
           styleClass="p-datatable-gridlines"
           [tableStyle]="{ 'min-width': '50rem' }"
@@ -47,7 +53,7 @@
             <tr>
               <td>{{ product.name }}</td>
               <td>
-                <img [src]="product.image" class="w-full h-56" alt="" />
+                <img [src]="product.image" alt="image" style="width: 100px" />
               </td>
               <td>{{ product.price }}</td>
               <!-- <td>{{ product.id }}</td> -->

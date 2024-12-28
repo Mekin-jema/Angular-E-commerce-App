@@ -112,6 +112,9 @@ export class ProductFormComponent implements OnInit {
                 product.richDescription
               );
               this.productForm.dateCreated.setValue(product.dateCreated);
+              //
+              this.productForm.image.setValidators([]);
+              this.productForm.image.updateValueAndValidity();
             },
             error: () => {
               this.messageService.add({
@@ -161,6 +164,11 @@ export class ProductFormComponent implements OnInit {
             summary: 'Success',
             detail: 'Product is updated',
           });
+          timer(2000)
+            .toPromise()
+            .then((done) => {
+              this.location.back();
+            });
         },
         error: () => {
           this.messageService.add({

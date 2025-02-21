@@ -1,13 +1,13 @@
-@import 'primeicons/primeicons.css';
+/* @import 'primeicons/primeicons.css';
 
 /* PrimeNG core styles */
-@import 'primeng/resources/primeng.min.css';
+/* @import 'primeng/resources/primeng.min.css'; */
 
 /* PrimeNG theme (Choose your preferred theme) */
-@import 'primeng/resources/themes/saga-blue/theme.css';
+/* @import 'primeng/resources/themes/saga-blue/theme.css'; */
 
 /* PrimeIcons (required for icons) */
-@import 'primeicons/primeicons.css';
+/* @import 'primeicons/primeicons.css'; */ 
 
 @tailwind base;
 @tailwind components;
